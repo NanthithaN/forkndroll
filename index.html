@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bgimg-1 {
+  background-image: url("https://marketplace.canva.com/EAFmatfc750/1/0/1600w/canva-black-and-white-minimalist-clean-photo-collage-moodboard-desktop-wallpaper-Sv53nJT8t18.jpg");
+  min-height: 100%;
+}
+
+.bgimg-2 {
+  background-image: url("https://img.freepik.com/premium-photo/girl-holding-camera-taking-shot-with-big-eyes_96207-93.jpg");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("https://marketplace.canva.com/EAFdfEd0zSs/1/0/1600w/canva-beige-modern-dog-love-photo-collage-TCLOpOxVL74.jpg");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  max-height: 50%;
+}
+video{
+    height: 50%;
+    max-height: 70vh;
+    width: auto;
+}
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+}
+.stat-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+    text-align: center;
+}
+
+.stat-box {
+    font-family: Arial, sans-serif;
+}
+
+.stat-box h1 {
+    font-size: 50px;
+    color: white;
+    margin: 0;
+}
+
+.stat-box p {
+    font-size: 20px;
+    color: white;
+    margin: 0;
+}
+.button {
+    background-color: grey; 
+    border: none; 
+    color: white; 
+    padding: 15px 25px; 
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 10px 0; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.button:hover {
+    background-color: beige; 
+    transform: scale(1.1); 
+    color: #111;
+}
+
+</style>
+</head>
+<body>
+
+<div class="bgimg-1">
+  <div class="caption">
+    <video autoplay muted loop id="myVideo">
+        <source src="video2.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+  <h3 style="text-align:center;">Welcome to Our Photobooth!!!</h3>
+  <p>
+    Step into our photobooth and capture your special moments with friends, family, or even on your own! Whether it's a birthday, wedding, or just a casual day out, our photobooth is here to help you make unforgettable memories.
+    
+    Strike a pose, show off your best smile, and let the fun begin! With easy-to-use features and plenty of fun props, you'll be able to create photos that you'll cherish for a lifetime.</p>
+</div>
+
+<div class="bgimg-2">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;padding:50px 80px;text-align: justify;"><strong>So what are you waiting for? 
+    <br>Jump in, have fun, and create memories that will last forever!<br>
+
+    Let’s make this moment picture-perfect! 📸✨
+    </strong>
+    </span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+    <div class="stat-container">
+        <div class="stat-box">
+            <h1>1000+</h1>
+            <p>Customers</p>
+        </div>
+    
+        <div class="stat-box">
+            <h1>500+</h1>
+            <p>Events</p>
+        </div>
+    
+        <div class="stat-box">
+            <h1>100+</h1>
+            <p>Photo Props</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="bgimg-3">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;">
+  <h2>Capture Your Moments With Us!!!</h2>
+  <a href="#" class="button">LogIn</a>
+  </div>
+</div>
+
+<div class="bgimg-1">
+  <div class="caption">
+  </div>
+</div>
+<div style="position:relative;">
+    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+      
+    </div>
+  </div>
+
+</body>
+</html>
