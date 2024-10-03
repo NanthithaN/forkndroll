@@ -1,39 +1,86 @@
-window.addEventListener('scroll', function () {
-    const scrollPos = window.scrollY; // Current scroll position
-    const windowHeight = window.innerHeight; // Height of the viewport
-    const totalHeight = document.body.scrollHeight; // Total height of the document
+const captureButton = document.getElementById('capture-btn');
+const video = document.getElementById('webcam-feed');
+const popup = document.getElementById('popup');
+const capturedImage = document.getElementById('captured-img');
+const closeBtn = document.getElementById('close-btn');
+const sendEmailBtn = document.getElementById('send-email-btn');
+const curtain = document.querySelector('.curtain');
+const textToScale = document.querySelectorAll('.side-panel, .webcam-container');
+const parallax = document.querySelector('.parallax');
 
-    // Calculate the fade-out effect for the first video
-    const video1 = document.getElementById('video1');
-    const fadeOutStart = windowHeight * 0.4; // When the fade-out starts
-    const fadeOutEnd = windowHeight; // When the first video should be fully faded out
+// Simulating the curtain opening after a brief delay
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        curtain.classList.add('open');
+    }, 1000); // Adjust the time for how quickly you want the curtain to open
+});
 
-    // Calculate the opacity for the first video
-    if (scrollPos > fadeOutStart && scrollPos < fadeOutEnd) {
-        const opacity = 1 - (scrollPos - fadeOutStart) / (fadeOutEnd - fadeOutStart);
-        video1.style.opacity = opacity; // Fade out the first video
-    } else if (scrollPos >= fadeOutEnd) {
-        video1.style.opacity = 0; // Fully transparent
-    } else {
-        video1.style.opacity = 1; // Fully visible
-    }
 
-    // Calculate the fade-in effect for the second video
-    const video2 = document.getElementById('video2');
-    const fadeInStart = fadeOutEnd; // Start fading in the second video after the first one fades out
-    const fadeInEnd = fadeInStart + windowHeight * 0.5; // When the second video should be fully visible
+// Access webcam
+navigator.mediaDevices.getUserMedia({ video: true })
+    .then((stream) => {
+        video.srcObject = stream;
+    })
+    .catch((error) => {
+        console.error('Error accessing webcam:', error);
+    });
 
-    // Calculate the opacity for the second video
-    if (scrollPos > fadeInStart && scrollPos < fadeInEnd) {
-        const opacity = (scrollPos - fadeInStart) / (fadeInEnd - fadeInStart);
-        video2.style.opacity = opacity; // Fade in the second video
-    } else if (scrollPos >= fadeInEnd) {
-        video2.style.opacity = 1; // Fully visible
-    } else {
-        video2.style.opacity = 0; // Fully transparent
-    }
+// Capture image
+captureButton.addEventListener('click', () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0);
+    const imageData = canvas.toDataURL('image/png');
+    capturedImage.src = imageData;
+    popup.classList.remove('hidden');
+});
 
-    // Parallax effect
-    video1.style.transform = `translateY(${scrollPos * 0.2}px)`; // First video moves slower
-    video2.style.transform = `translateY(${scrollPos * 0.4}px)`; // Second video moves faster
+// Close popup
+closeBtn.addEventListener('click', () => {
+    popup.classList.add('hidden');
+});
+
+// Send email
+sendEmailBtn.addEventListener('click', () => {
+    const customText = document.getElementById('custom-text').value;
+    const email = document.getElementById('email').value;
+
+    fetch('/send-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            imageData: capturedImage.src,
+            customText,
+            email,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Email sent successfully!');
+        popup.classList.add('hidden');
+    })
+    .catch((error) => {
+        console.error('Error sending email:', error);
+    });
+});
+
+// Scroll effect to shrink text and move up
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    // Parallax scrolling effect
+    parallax.style.backgroundPositionY = `${scrollY * 0.5}px`;
+
+    // Shrink text and move up
+    textToScale.forEach(element => {
+        if (scrollY > 50) {
+            element.classList.add('shrinking');
+        } else {
+            element.classList.remove('shrinking');
+        }
+    });
 });
