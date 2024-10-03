@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Capture App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="top-box">
+            <div class="booth-name">
+                <h1>Start Camera Snap</h1>
+            </div>
+            <div class="event-details">
+                <h1 class="event-title">Capture Your Beautiful Day to Be Remembered</h1>
+                <p class="event-date">Say CHEESE !</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="side">
+        <h2>Hello lovely people</h2>
+        <p>Love to see you ... Smile...let's take a cute pic of You</p>
+    </div>
+
+    <!-- Side Content Section (Below Header) -->
+
+    <div class="parallax">
+        <!-- Curtain Effect -->
+        <div class="curtain">
+            <img class="curtain-image left" src="left.jpg" alt="Left Curtain" />
+            <img class="curtain-image right" src="right.jpg" alt="Right Curtain" />
+        </div>
+
+        <div class="container">
+            <!-- Side Panels and Webcam Section -->
+            <div class="center-content">
+                <!-- Side Panel (Left) -->
+                
+                <div class="side-panel left">
+                    <h2>Add Stickers</h2>
+                    <p>Customize your photo by adding fun stickers:</p>
+                    <button>Sticker 1</button>
+                    <button>Sticker 2</button>
+                    <button>Sticker 3</button>
+                </div>
+
+                <!-- Webcam Capture Section -->
+                <div class="webcam-container">
+                    <video id="webcam-feed" autoplay></video>
+                    <button id="capture-btn">Capture Photo</button>
+
+                    <div id="popup" class="popup hidden">
+                        <div class="popup-content">
+                            <h2>Preview Image</h2>
+                            <img id="captured-img" alt="Captured Image">
+                            <input type="text" placeholder="Enter your custom text" id="custom-text" class="text-input">
+                            <input type="email" placeholder="Enter your email" id="email" class="email-input">
+                            <button id="send-email-btn">Send to Email</button>
+                            <button id="close-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Panel (Right) -->
+                <div class="side-panel right">
+                    <h2>Choose Template</h2>
+                    <p>Select from a variety of templates to customize your photo:</p>
+                    <button>Template 1</button>
+                    <button>Template 2</button>
+                    <button>Template 3</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
